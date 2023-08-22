@@ -67,10 +67,9 @@ def get_reservation_price(current_epoch, epoch, epoch_to, reservation_discount, 
   return round(tot_price)
 
 class AimaTransactionHandler(TransactionHandler):
-  def __init__(self, namespace_prefix, api_server, exchange):
+  def __init__(self, namespace_prefix, exchange):
     self._namespace_prefix = namespace_prefix
     _display("Starting prefix %s" % namespace_prefix)
-    self.api_server = api_server
     self.exchange = exchange
 
   @property
@@ -560,12 +559,9 @@ if __name__ == "__main__":
   validator = os.getenv("VALIDATOR")
   if validator is None or validator == "":
     validator = "localhost"
-  rest_api = os.getenv("RESTAPI")
-  if rest_api is None or rest_api == "":
-    rest_api = "localhost"
   processor = TransactionProcessor(url=f"tcp://{validator}:4004")
   init_console_logging(verbose_level=4)
   exchange = os.getenv("AIMA_EXCHANGE")
-  handler = AimaTransactionHandler(AIMA_NAMESPACE, 'http://{rest_api}:8008', exchange)
+  handler = AimaTransactionHandler(AIMA_NAMESPACE, exchange)
   processor.add_handler(handler)
   processor.start()
