@@ -8,7 +8,7 @@ This repository contains a [Sawtooth](https://www.hyperledger.org/projects/sawto
 
 ### Set up Sawtooth Network
 Start up a sawtooth network. The easiest way to do this is to run a devmode single node
-network using the proviced [docker-compose file](https://github.com/hyperledger/sawtooth-core/blob/main/docker/compose/sawtooth-default.yaml). 
+network using the provided [docker-compose file](https://github.com/hyperledger/sawtooth-core/blob/main/docker/compose/sawtooth-default.yaml). 
 Then expose the rest-api as well as the validator to the local host.
 ```
 ...
@@ -38,7 +38,6 @@ Generate a key to issue transactions:
 ```
 python3 aima_client.py genkey && mv aima.key provider.key
 ```
-
 
 ### Generate client credentials
 ```
@@ -81,7 +80,7 @@ python3 aima_client.py allocate $(cat provider.pub) 1 1 1000 1200 100
 ```
 python3 aima_client.py show $(cat provider.pub)
 ```
-## List transacttions
+## List transactions
 ```
 python3 aima_client.py transactions
 ```
