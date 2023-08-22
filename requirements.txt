@@ -1,0 +1,5 @@
+sawtooth_sdk
+requests
+flask
+flask-cors
+pulp
